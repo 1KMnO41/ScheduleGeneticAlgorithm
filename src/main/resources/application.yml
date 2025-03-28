@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: genetic-schedule-springboot
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/schedule?serverTimezone=UTC
+    username: root
+    password: 123456
+    # Druid 连接池配置
+    druid:
+      initial-size: 5 # 初始连接数
+      min-idle: 5     # 最小空闲连接数
+      max-active: 20  # 最大连接数
+      max-wait: 60000 # 获取连接的最大等待时间（毫秒）
+
+mybatis-plus:
+  mapper-locations: classpath:mappers/*.xml # Mapper XML 文件路径
+  configuration:
+    map-underscore-to-camel-case: true # 开启驼峰命名转换
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl  # 使用 SLF4J 输出日志
+
+logging:
+  level:
+    com/schedule/geneticschedulespringboot/mappers: info  # 设置你的 Mapper 接口所在包的日志级别为 DEBUG
