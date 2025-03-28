@@ -13,6 +13,7 @@ public class ScheduleServiceImpl implements IScheduleService {
     
     public GeneticResult generateSchedule(SoftConstraintCalculator calculator) throws IOException {
         TimetableGA timetableGA = new TimetableGA();
+        if (calculator == null) calculator = new SoftConstraintCalculator();
         return timetableGA.run(calculator);
     }
 }
